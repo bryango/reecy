@@ -29,6 +29,8 @@ function guess() {
         icon.innerText = "🐮";
         echo.appendChild(answer.cloneNode(true));
         response.innerHTML = "You got it! Happy! Happy! Happy~";
+        let button = document.getElementById("submit");
+        button.onclick = refresh;
         return;
     }
     echo.innerHTML = `<i>${guess}</i>`;
@@ -42,5 +44,8 @@ function guess() {
         .filter((x) => word.includes(x, 2))
         .length;
     response.innerHTML = `You got <b>${matched}</b> alphabet(s)!`;
+}
+function refresh() {
+    location.reload();
 }
 //# sourceMappingURL=game.js.map

@@ -1,4 +1,7 @@
+/* eslint-disable @typescript-eslint/space-before-function-paren */
 /* eslint-disable padded-blocks */
+
+const HINT_PREFIX_LENGTH = 2
 
 fetch('words.txt')
   .then(async (response) => await response.text())
@@ -18,33 +21,44 @@ Array.prototype.random = function () {
   ]
 }
 
-function setup (word: string): void {
-  const guess = document.getElementById('guess') as HTMLInputElement
-  guess.value = word.slice(0, 2)
+function setup(word: string): void {
 
-  const secret = document.getElementById('secret') as HTMLDivElement
-  secret.innerText = word
+  (document.getElementById('secret') as HTMLDivElement).innerText =
+    word;
+  (document.getElementById('guess') as HTMLInputElement).value =
+    word.slice(0, HINT_PREFIX_LENGTH)
 
-  const answer = `<a href="https://www.google.com/search?q=${word}+meaning" id="answer">${word}</a>`
+  const answer = document.createElement('a')
+  answer.id = 'answer'
+  answer.href = `https://www.google.com/search?q=${word}+meaning`
+  answer.innerHTML = `<i>${word}</i>`
+
   const hidden = document.getElementById('hidden') as HTMLParagraphElement
-  hidden.innerHTML += answer
-  console.log(hidden)
+  hidden.append(answer)
+
+  const loading = document.getElementById('loading') as HTMLDivElement
+  const loaded = document.getElementById('loaded') as HTMLDivElement
+  loading.hidden = true
+  loaded.hidden = false;
+
+  (document.getElementById('submit') as HTMLButtonElement).onclick = () => {
+    guess(word)
+  }
 }
 
-function getAlphabets (word: string): string[] {
+function getAlphabets(word: string): string[] {
   return [...new Set(word.split(''))]
 }
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-function guess (): void {
+function guess(word: string): void {
 
   const guess = (document.getElementById('guess') as HTMLInputElement).value
-  const word = (document.getElementById('secret') as HTMLLinkElement).innerText
-  const answer = document.getElementById('answer') as HTMLLinkElement
-  const prefix = word.slice(0, 2)
+  const answer = document.getElementById('answer') as HTMLAnchorElement
+  const prefix = word.slice(0, HINT_PREFIX_LENGTH)
 
-  const table = document.getElementById('results') as HTMLTableElement
-  const row = table.insertRow(0)
+  const results = document.getElementById('results') as HTMLTableElement
+  const row = results.insertRow(0)
 
   const icon = row.insertCell()
   const echo = row.insertCell()
@@ -52,11 +66,10 @@ function guess (): void {
 
   if (guess === word) {
     icon.innerText = '🐮'
-    echo.appendChild(answer.cloneNode(true))
-    response.innerHTML = 'You got it! Happy! Happy! Happy~'
+    echo.append(answer.cloneNode(true))
+    response.innerHTML = 'You got it! Happy! Happy! Happy~';
 
-    const button = document.getElementById('submit') as HTMLButtonElement
-    button.onclick = refresh
+    (document.getElementById('submit') as HTMLButtonElement).onclick = refresh
     return
   }
 
@@ -69,12 +82,12 @@ function guess (): void {
   }
 
   icon.innerText = '🐱'
-  const matched = getAlphabets(guess.slice(2))
-    .filter((x) => word.includes(x, 2))
+  const matched = getAlphabets(guess.slice(HINT_PREFIX_LENGTH))
+    .filter((x) => word.includes(x, HINT_PREFIX_LENGTH))
     .length
-  response.innerHTML = `You got <b>${matched}</b> alphabet(s)!`
+  response.innerHTML = `You hit <b>${matched}</b> alphabet(s)!`
 }
 
-function refresh (): void {
+function refresh(): void {
   location.reload()
 }

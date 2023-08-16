@@ -23,22 +23,27 @@
         <p>😚 <i> 萱萱 600 天快乐! 💐</i></p>
 
         <h2>🎲 Guess a word!</h2>
-        <p>
-            <input type="text" id="guess" />
-            <button id="submit" onclick="guess()">🚀</button>
-        </p>
+        <div id="loading" hidden="false">
+            <p><i>Rolling... </i>🎲</p>
+        </div>
+        <div id="loaded" hidden="true">
+            <p>
+                <input type="text" id="guess" />
+                <button id="submit" onclick="guess()">🚀</button>
+            </p>
 
-        <p>
-        <table id="results">
-        </table>
-        </p>
+            <p>
+            <table id="results">
+            </table>
+            </p>
 
-        <details>
-            <summary><b>Tell me the answer!</b></summary>
-            <p id="hidden" style="margin-top: 0px;">The answer is: </p>
-        </details>
+            <details>
+                <summary><b>Tell me the answer!</b></summary>
+                <p id="hidden" style="margin-top: 0px;">The answer is: </p>
+            </details>
 
-        <div id="secret" hidden="true"></div>
+            <div id="secret" hidden="true"></div>
+        </div>
     </main>
 </body>
 

@@ -3,7 +3,7 @@
 
 const HINT_PREFIX_LENGTH = 2
 
-fetch('./assets/wordslist.txt')
+fetch('./res/wordslist.txt')
   .then(async (response) => await response.text())
   .then((text) => text.split('\n').random())
   .then((word) => { setup(word) })

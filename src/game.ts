@@ -22,6 +22,7 @@ function setup(word: string) {
     let answer = `<a href="https://www.google.com/search?q=${word}+meaning" id="answer">${word}</a>`
     let hidden = document.getElementById("hidden") as HTMLParagraphElement
     hidden.innerHTML += answer
+    console.log(hidden)
 }
 
 function get_alphabets(word: string) {

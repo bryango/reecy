@@ -19,6 +19,9 @@ function setup(word: string) {
     let guess = document.getElementById("guess") as HTMLInputElement
     guess.value = word.slice(0, 2)
 
+    let secret = document.getElementById("secret") as HTMLDivElement
+    secret.innerText = word
+
     let answer = `<a href="https://www.google.com/search?q=${word}+meaning" id="answer">${word}</a>`
     let hidden = document.getElementById("hidden") as HTMLParagraphElement
     hidden.innerHTML += answer
@@ -32,8 +35,8 @@ function get_alphabets(word: string) {
 function guess() {
 
     let guess = (document.getElementById("guess") as HTMLInputElement).value
+    let word = (document.getElementById("secret") as HTMLLinkElement).innerText
     let answer = document.getElementById("answer") as HTMLLinkElement
-    let word = answer.innerText
     let prefix = word.slice(0, 2)
 
     let table = document.getElementById("results") as HTMLTableElement;

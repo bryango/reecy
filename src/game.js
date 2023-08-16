@@ -8,17 +8,20 @@ Array.prototype.random = function () {
 function setup(word) {
     let guess = document.getElementById("guess");
     guess.value = word.slice(0, 2);
+    let secret = document.getElementById("secret");
+    secret.innerText = word;
     let answer = `<a href="https://www.google.com/search?q=${word}+meaning" id="answer">${word}</a>`;
     let hidden = document.getElementById("hidden");
     hidden.innerHTML += answer;
+    console.log(hidden);
 }
 function get_alphabets(word) {
     return [...new Set(word.split(""))];
 }
 function guess() {
     let guess = document.getElementById("guess").value;
+    let word = document.getElementById("secret").innerText;
     let answer = document.getElementById("answer");
-    let word = answer.innerText;
     let prefix = word.slice(0, 2);
     let table = document.getElementById("results");
     let row = table.insertRow(0);

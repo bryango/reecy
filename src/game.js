@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/space-before-function-paren */
 /* eslint-disable padded-blocks */
 const HINT_PREFIX_LENGTH = 2;
-fetch('/assets/wordslist.txt')
+fetch('./assets/wordslist.txt')
     .then(async (response) => await response.text())
     .then((text) => text.split('\n').random())
     .then((word) => { setup(word); })

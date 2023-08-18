@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/space-before-function-paren */
 /* eslint-disable padded-blocks */
 const HINT_PREFIX_LENGTH = 2;
+const THE_BEGINNING = new Date('2021-12-24T00:00:00+10:00').valueOf();
 fetch('./res/wordslist.txt')
     .then(async (response) => await response.text())
     .then((text) => text.split('\n').random())
@@ -11,6 +12,8 @@ Array.prototype.random = function () {
     return this[Math.floor(Math.random() * this.length)];
 };
 function setup(word) {
+    document.getElementById('counter').innerText =
+        Math.floor((Date.now() - THE_BEGINNING) / (1000 * 60 * 60 * 24)).toFixed();
     document.getElementById('secret').innerText =
         word;
     document.getElementById('guess').value =

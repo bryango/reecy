@@ -1,4 +1,4 @@
-# Wordy
+# Wordie
 a word game created by Reecy 💖
 
 ## resources

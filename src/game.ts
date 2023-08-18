@@ -2,6 +2,7 @@
 /* eslint-disable padded-blocks */
 
 const HINT_PREFIX_LENGTH = 2
+const THE_BEGINNING = new Date('2021-12-24T00:00:00+10:00').valueOf()
 
 fetch('./res/wordslist.txt')
   .then(async (response) => await response.text())
@@ -23,6 +24,10 @@ Array.prototype.random = function () {
 
 function setup(word: string): void {
 
+  (document.getElementById('counter') as HTMLElement).innerText =
+    Math.floor(
+      (Date.now() - THE_BEGINNING) / (1000 * 60 * 60 * 24)
+    ).toFixed();
   (document.getElementById('secret') as HTMLDivElement).innerText =
     word;
   (document.getElementById('guess') as HTMLInputElement).value =

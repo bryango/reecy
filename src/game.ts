@@ -24,10 +24,16 @@ Array.prototype.random = function () {
 
 function setup(word: string): void {
 
-  (document.getElementById('counter') as HTMLElement).innerText =
+  const counter = document.getElementById('counter') as HTMLElement
+  counter.innerText =
     Math.floor(
       (Date.now() - THE_BEGINNING) / (1000 * 60 * 60 * 24)
-    ).toFixed();
+    ).toFixed()
+
+  if (new Date().toDateString().endsWith('Aug 22 2023')) {
+    counter.innerText = '七夕 🌠 ' + counter.innerText
+  }
+
   (document.getElementById('secret') as HTMLDivElement).innerText =
     word;
   (document.getElementById('guess') as HTMLInputElement).value =

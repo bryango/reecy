@@ -1,7 +1,33 @@
 # Wordie
 a word game created by Reecy 💖
 
-## resources
+### How to boot your first Mini App
+
+1. You should host a webpage. The easiest way is to host a page on GitHub. For that, you should
+
+    a. create a new repository and add a new file `index.html`
+
+    b. add the following content to `index.html` and save.
+
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="utf-8"/>
+            <script src="https://telegram.org/js/telegram-web-app.js?1"></script>
+        </head>
+        <body>
+            Hello World!
+            <script>
+                Telegram.WebApp.ready();
+            </script>
+        </body>
+        </html>
+
+    c. on GitHub, go to Settings --> Pages --> Build and deployment --> select Branch and then Save, to deploy it
+
+3. Find [@BotFather](https://t.me/BotFather) on Telegram, create a new bot, select your bot --> Bot Settings --> Menu Button --> add the url of the `index.html` you hold. Then, you should be able to launch the Mini App using the Bot's menu button.
+
+### Resources
 
 resources follow their respective license:
 
@@ -16,3 +42,7 @@ curl https://raw.githubusercontent.com/first20hours/google-10000-english/master/
 - [`better.css`](res/better.css) adapted from [this thing](http://bettermotherfuckingwebsite.com)
 
 the rest of the code is licensed under **GNU GPLv3**.
+
+### Helpful Resources
+
+* [Offical Docs](https://core.telegram.org/bots/webapps)

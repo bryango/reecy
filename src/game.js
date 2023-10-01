@@ -37,11 +37,7 @@ function setup(word) {
         guess(word);
     };
 
-    try {
-        const bg_color = Telegram.WebApp.themeParams.bg_color;
-    } catch (error) {
-        const bg_color = "#ffffff";
-    }
+    const bg_color = Telegram.WebApp.themeParams.bg_color || "#ffffff";
     const r = parseInt(bg_color.slice(1, 3), 16);
     const g = parseInt(bg_color.slice(3, 5), 16);
     const b = parseInt(bg_color.slice(5, 7), 16);

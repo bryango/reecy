@@ -1,23 +1,25 @@
 /* eslint-disable @typescript-eslint/space-before-function-paren */
 /* eslint-disable padded-blocks */
 const HINT_PREFIX_LENGTH = 2;
-const THE_BEGINNING = new Date('2021-12-24T00:00:00+10:00').valueOf();
+// const THE_BEGINNING = new Date('2021-12-24T00:00:00+10:00').valueOf();
 fetch('./res/wordslist.txt')
     .then(async (response) => await response.text())
     .then((text) => text.split('\n').random())
     .then((word) => { setup(word); })
     .catch((e) => { console.log(e); });
+
 // eslint-disable-next-line no-extend-native
 Array.prototype.random = function () {
     return this[Math.floor(Math.random() * this.length)];
 };
+
 function setup(word) {
-    const counter = document.getElementById('counter');
-    counter.innerText =
-        Math.floor((Date.now() - THE_BEGINNING) / (1000 * 60 * 60 * 24)).toFixed();
-    if (new Date().toDateString().endsWith('Aug 22 2023')) {
-        counter.innerText = '七夕 🌠 ' + counter.innerText;
-    }
+    // const counter = document.getElementById('counter');
+    // counter.innerText =
+    //     Math.floor((Date.now() - THE_BEGINNING) / (1000 * 60 * 60 * 24)).toFixed();
+    // if (new Date().toDateString().endsWith('Aug 22 2023')) {
+    //     counter.innerText = '七夕 🌠 ' + counter.innerText;
+    // }
     document.getElementById('secret').innerText =
         word;
     document.getElementById('guess').value =
@@ -36,9 +38,11 @@ function setup(word) {
         guess(word);
     };
 }
+
 function getAlphabets(word) {
     return [...new Set(word.split(''))];
 }
+
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 function guess(word) {
     const guess = document.getElementById('guess').value;
@@ -68,6 +72,7 @@ function guess(word) {
         .length;
     response.innerHTML = `You hit <b>${matched}</b> alphabet(s)!`;
 }
+
 function refresh() {
     location.reload();
 }

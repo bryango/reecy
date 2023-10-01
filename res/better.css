@@ -22,18 +22,25 @@ p {
   margin: .8em 0;
 }
 
-input#guess {
-  height: 2em;
-  width: 75%;
-  max-width: 360px;
-  font-size: 16px;
+p#guessubmit {
+  font-size: 20px;
   font-style: italic;
+  height: 1.5em;
+  display: flex;
+  justify-content: space-between;
+}
+
+input#guess {
+  font-size: inherit;
+  font-style: inherit;
+  width: 80%;
 }
 
 button#submit {
+  font-size: inherit;
+  font-style: inherit;
   width: 15%;
   max-width: 48px;
-  height: 2.4em;
 }
 
 table {

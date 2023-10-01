@@ -20,10 +20,9 @@ function setup(word) {
     // if (new Date().toDateString().endsWith('Aug 22 2023')) {
     //     counter.innerText = '七夕 🌠 ' + counter.innerText;
     // }
-    document.getElementById('secret').innerText =
-        word;
-    document.getElementById('guess').value =
-        word.slice(0, HINT_PREFIX_LENGTH);
+
+    document.getElementById('secret').innerText = word;
+    document.getElementById('guess').value = word.slice(0, HINT_PREFIX_LENGTH);
     const answer = document.createElement('a');
     answer.id = 'answer';
     answer.href = `https://www.google.com/search?q=${word}+meaning`;
@@ -37,6 +36,24 @@ function setup(word) {
     document.getElementById('submit').onclick = () => {
         guess(word);
     };
+
+    try {
+        const bg_color = Telegram.WebApp.themeParams.bg_color;
+    } catch (error) {
+        const bg_color = "#ffffff";
+    }
+    const r = parseInt(bg_color.slice(1, 3), 16);
+    const g = parseInt(bg_color.slice(3, 5), 16);
+    const b = parseInt(bg_color.slice(5, 7), 16);
+    const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+    console.log(luminance)
+    if (luminance < 0.5) {
+        document.body.style.backgroundImage = 'url(res/cats-dark.jpg)';
+        document.body.style.backgroundSize  = 'cover';
+    } else {
+        document.body.style.backgroundImage = 'url(res/cats.jpg)';
+        document.body.style.backgroundSize  = 'cover';
+    }
 }
 
 function getAlphabets(word) {

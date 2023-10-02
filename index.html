@@ -4,9 +4,12 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wordie</title>
+    <title>Wordie: a word game created by Reecy </title>
     <link rel="stylesheet" type="text/css" href="./res/better.css" />
     <link rel="icon" type="image/png" href="./res/favicon.ico">
+
+    <!--To connect your Mini App to the Telegram client, place the script telegram-web-app.js in the <head> tag before any other scripts-->
+    <script src="https://telegram.org/js/telegram-web-app.js?1"></script>
     <script src="./src/game.js"></script>
 </head>
 
@@ -20,21 +23,20 @@
             <i>Created by</i>
             🌙 <i>Reecy</i>&thinsp; ❤️ <i>Bryan</i> ⭐
         </p>
-        <p>😚 <i> 萱萱 <b id="counter">600</b> 天快乐! 💐</i></p>
+        <!--p>😚 <i> 萱萱 <b id="counter">600</b> 天快乐! 💐</i></p-->
 
         <h2>🎲 Guess a word!</h2>
         <div id="loading" hidden="false">
             <p><i>Rolling... </i>🎲</p>
         </div>
         <div id="loaded" hidden="true">
-            <p>
+            <p id="guessubmit">
                 <input type="text" id="guess" />
                 <button id="submit" onclick="guess()">🚀</button>
             </p>
 
             <p>
-            <table id="results">
-            </table>
+            <table id="results"></table>
             </p>
 
             <details>
@@ -45,6 +47,10 @@
             <div id="secret" hidden="true"></div>
         </div>
     </main>
+
+    <script>
+        Telegram.WebApp.ready();
+    </script>
 </body>
 
 </html>

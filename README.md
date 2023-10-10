@@ -1,6 +1,17 @@
 # Wordie
-a word game created by Reecy 💖
+A word game created by Reecy 💖 realized by Bryan ⭐ and fit to Telegram Mini App by Youran 🌙 
 
+## How to play
+
+You are given a hint of the first two letters of a word.
+Try to guess the word!
+
+After each guess, the game will respond with the number of matching _alphabets._
+For example, if the answer is `banana`, and you've guessed the word `bank`, then you hit 1 matching alphabet.
+
+Keep guessing until you reach the correct word!
+
+## Deployment
 ### How to boot your first Mini App
 
 1. You should host a webpage. The easiest way is to host a page on GitHub. For that, you should

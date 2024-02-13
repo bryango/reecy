@@ -11,7 +11,7 @@ if (PRESET_ANSWER === null || PRESET_ANSWER === '') {
         .catch((e) => { console.log(e); });
 }
 else {
-    window.onload = () => { setup(PRESET_ANSWER); };
+    window.onload = () => { setup(atob(PRESET_ANSWER)); };
 }
 // eslint-disable-next-line no-extend-native
 Array.prototype.random = function () {
@@ -79,5 +79,19 @@ function guess(word) {
 }
 function refresh() {
     location.reload();
+}
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+function share() {
+    const word = document.getElementById('share-word').value;
+    const encoded = btoa(word);
+    const url = new URL(document.location.href);
+    url.searchParams.set('answer', encoded);
+    const link = document.createElement('a');
+    link.id = 'share-link';
+    link.href = url.toString();
+    link.innerHTML = url.toString();
+    const shareHint = document.getElementById('share-hint');
+    shareHint.append(link);
+    shareHint.hidden = false;
 }
 //# sourceMappingURL=game.js.map

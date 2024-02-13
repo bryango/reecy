@@ -13,7 +13,7 @@ if (PRESET_ANSWER === null || PRESET_ANSWER === '') {
     .then((word) => { setup(word) })
     .catch((e) => { console.log(e) })
 } else {
-  window.onload = () => { setup(PRESET_ANSWER) }
+  window.onload = () => { setup(atob(PRESET_ANSWER)) }
 }
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -111,4 +111,23 @@ function guess(word: string): void {
 
 function refresh(): void {
   location.reload()
+}
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+function share(): void {
+
+  const word = (document.getElementById('share-word') as HTMLInputElement).value
+  const encoded = btoa(word)
+  const url = new URL(document.location.href)
+  url.searchParams.set('answer', encoded)
+
+  const link = document.createElement('a')
+  link.id = 'share-link'
+  link.href = url.toString()
+  link.innerHTML = url.toString()
+
+  const shareHint = document.getElementById('share-hint') as HTMLParagraphElement
+  shareHint.append(link)
+  shareHint.hidden = false
+
 }

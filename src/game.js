@@ -18,6 +18,9 @@ function setup(word) {
     if (new Date().toDateString().endsWith('Aug 22 2023')) {
         counter.innerText = '七夕 🌠 ' + counter.innerText;
     }
+    if (new Date().toDateString().endsWith('Feb 14 2024')) {
+        counter.innerText = '情人节 💕 ' + counter.innerText;
+    }
     document.getElementById('secret').innerText =
         word;
     document.getElementById('guess').value =

@@ -34,6 +34,10 @@ function setup(word: string): void {
     counter.innerText = '七夕 🌠 ' + counter.innerText
   }
 
+  if (new Date().toDateString().endsWith('Feb 14 2024')) {
+    counter.innerText = '情人节 💕 ' + counter.innerText
+  }
+
   (document.getElementById('secret') as HTMLDivElement).innerText =
     word;
   (document.getElementById('guess') as HTMLInputElement).value =

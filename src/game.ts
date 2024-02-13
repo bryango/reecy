@@ -4,11 +4,17 @@
 const HINT_PREFIX_LENGTH = 2
 const THE_BEGINNING = new Date('2021-12-24T00:00:00+10:00').valueOf()
 
-fetch('./res/wordslist.txt')
-  .then(async (response) => await response.text())
-  .then((text) => text.split('\n').random())
-  .then((word) => { setup(word) })
-  .catch((e) => { console.log(e) })
+const PRESET_ANSWER = new URL(document.location.href).searchParams.get('answer')
+
+if (PRESET_ANSWER === null || PRESET_ANSWER === '') {
+  fetch('./res/wordslist.txt')
+    .then(async (response) => await response.text())
+    .then((text) => text.split('\n').random())
+    .then((word) => { setup(word) })
+    .catch((e) => { console.log(e) })
+} else {
+  window.onload = () => { setup(PRESET_ANSWER) }
+}
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 interface Array<T> {

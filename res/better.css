@@ -22,18 +22,35 @@ p {
   margin: .8em 0;
 }
 
-input#guess {
-  height: 2em;
-  width: 75%;
-  max-width: 360px;
+input, button {
+  box-sizing: border-box;
+  height: 2.4em;
+  min-width: 2.4em;
   font-size: 16px;
+  border-radius: 8px;
+  border: 0px solid #ccc;
+}
+
+input {
+  height: 2.3em;
+  border-width: 2px;
+  padding: 4px 8px;
   font-style: italic;
 }
 
-button#submit {
+input#guess {
+  width: 75%;
+  max-width: 360px;
+}
+
+input#share-word {
+  width: 35%;
+  max-width: 300px;
+}
+
+button {
   width: 15%;
   max-width: 48px;
-  height: 2.4em;
 }
 
 table {
